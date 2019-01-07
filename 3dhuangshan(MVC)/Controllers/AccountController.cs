@@ -27,7 +27,7 @@ namespace _3dhuangshan_MVC_.Controllers
             string compare = n.MyUserSearch(Name, PW);
             int UserID = n.MyUserIdGetbyName(Name);
 
-            if ( compare == "OK")
+            if (compare == "OK")
             {
 
                 HttpCookie cookieUser = new HttpCookie("User");
