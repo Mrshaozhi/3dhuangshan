@@ -1,0 +1,818 @@
+﻿
+@{
+    ViewBag.Title = "Weather";
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>黄山天气</title>
+    <!--<link href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700" media="all" rel="stylesheet" type="text/css" />-->
+    <link href="../stylesheets/bootstrap.min.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/font-awesome.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/se7en-font.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/isotope.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/jquery.fancybox.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/fullcalendar.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/wizard.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/select2.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/morris.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/datatables.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/datepicker.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/timepicker.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/colorpicker.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/bootstrap-switch.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/daterange-picker.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/typeahead.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/summernote.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/pygments.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/style.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/color/green.css" media="all" rel="alternate stylesheet" title="green-theme" type="text/css" />
+    <link href="../stylesheets/color/orange.css" media="all" rel="alternate stylesheet" title="orange-theme" type="text/css" />
+    <link href="../stylesheets/color/magenta.css" media="all" rel="alternate stylesheet" title="magenta-theme" type="text/css" />
+    <link href="../stylesheets/color/gray.css" media="all" rel="alternate stylesheet" title="gray-theme" type="text/css" />
+    <script src="../javascripts/jquery.min.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery-ui.js" type="text/javascript"></script>
+    <script src="../javascripts/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../javascripts/raphael.min.js" type="text/javascript"></script>
+    <script src="../javascripts/selectivizr-min.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.mousewheel.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.vmap.min.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.vmap.sampledata.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.vmap.world.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.bootstrap.wizard.js" type="text/javascript"></script>
+    <script src="../javascripts/fullcalendar.min.js" type="text/javascript"></script>
+    <script src="../javascripts/gcal.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="../javascripts/datatable-editable.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.easy-pie-chart.js" type="text/javascript"></script>
+    <script src="../javascripts/excanvas.min.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.isotope.min.js" type="text/javascript"></script>
+    <script src="../javascripts/isotope_extras.js" type="text/javascript"></script>
+    <script src="../javascripts/modernizr.custom.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.fancybox.pack.js" type="text/javascript"></script>
+    <script src="../javascripts/select2.js" type="text/javascript"></script>
+    <script src="../javascripts/styleswitcher.js" type="text/javascript"></script>
+    <script src="../javascripts/wysiwyg.js" type="text/javascript"></script>
+    <script src="../javascripts/summernote.min.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.inputmask.min.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.validate.js" type="text/javascript"></script>
+    <script src="../javascripts/bootstrap-fileupload.js" type="text/javascript"></script>
+    <script src="../javascripts/bootstrap-datepicker.js" type="text/javascript"></script>
+    <script src="../javascripts/bootstrap-timepicker.js" type="text/javascript"></script>
+    <script src="../javascripts/bootstrap-colorpicker.js" type="text/javascript"></script>
+    <script src="../javascripts/bootstrap-switch.min.js" type="text/javascript"></script>
+    <script src="../javascripts/typeahead.js" type="text/javascript"></script>
+    <script src="../javascripts/daterange-picker.js" type="text/javascript"></script>
+    <script src="../javascripts/date.js" type="text/javascript"></script>
+    <script src="../javascripts/morris.min.js" type="text/javascript"></script>
+    <script src="../javascripts/skycons.js" type="text/javascript"></script>
+    <script src="../javascripts/fitvids.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.sparkline.min.js" type="text/javascript"></script>
+    <script src="../javascripts/main.js" type="text/javascript"></script>
+    <script src="../javascripts/respond.js" type="text/javascript"></script>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <script type="text/javascript">
+
+        $.ajax({
+            type: 'GET',
+            url: 'https://www.tianqiapi.com/api/',
+            data: 'version=v1&city=%E9%BB%84%E5%B1%B1%E5%8C%BA',
+            dataType: 'JSON',
+            error: function () {
+                alert('网络错误');
+            },
+            success: function (res) {
+                var date = res.data[0].date + "|" + res.data[1].date + "|" + res.data[2].date;
+                var weather = res.data[0].wea + "|" + res.data[1].wea + "|" + res.data[2].wea;
+                var winD = res.data[0].win[0] + "|" + res.data[1].win[0] + "|" + res.data[2].win[0];
+                var winS = res.data[0].win_speed.split("-")[0] + "|" + res.data[1].win_speed.split("-")[0] + "|" + res.data[2].win_speed.split("-")[0];
+                var temMin = res.data[0].tem2 + "|" + res.data[1].tem2 + "|" + res.data[2].tem2;
+                var temMax = res.data[0].tem1 + "|" + res.data[1].tem1 + "|" + res.data[2].tem1;
+                $.ajax({
+                    type: 'post',
+                    url: '../HS_Weather/WeatherBusiness',
+                    data: { weather: weather, winD: winD, winS: winS, temMin: temMin, temMax: temMax, date: date, judge: "first" },
+                    dataType: 'JSON',
+                    success: function (data) {
+
+                    }
+                })
+
+
+                //天气
+                $("#first").text(res.data[0].day);
+                $("#second").text(res.data[1].day);
+                $("#third").text(res.data[2].day);
+                $("#fourth").text(res.data[3].day);
+                $("#fiveth").text(res.data[4].day);
+                $("#sixth").text(res.data[5].day);
+                $("#firstTe").text(res.data[0].tem2.split("℃")[0] + " ~ " + res.data[0].tem1.split("℃")[0]);
+                $("#secondTe").text(res.data[1].tem2.split("℃")[0] + " ~ " + res.data[1].tem1.split("℃")[0]);
+                $("#thirdTe").text(res.data[2].tem2.split("℃")[0] + " ~ " + res.data[2].tem1.split("℃")[0]);
+                $("#fourthTe").text(res.data[3].tem2.split("℃")[0] + " ~ " + res.data[3].tem1.split("℃")[0]);
+                $("#fivethTe").text(res.data[4].tem2.split("℃")[0] + " ~ " + res.data[4].tem1.split("℃")[0]);
+                $("#sixthTe").text(res.data[5].tem2.split("℃")[0] + " ~ " + res.data[5].tem1.split("℃")[0]);
+                $("#weather_0").text("[" + res.data[0].wea + "]")
+                $("#weather_1").text("[" + res.data[1].wea + "]")
+                $("#weather_2").text("[" + res.data[2].wea + "]")
+                $("#weather_3").text("[" + res.data[3].wea + "]")
+                $("#weather_4").text("[" + res.data[4].wea + "]")
+                $("#weather_5").text("[" + res.data[5].wea + "]")
+                var first = res.data[0].wea.split("转");
+                var second = res.data[1].wea.split("转");
+                var third = res.data[2].wea.split("转");
+                var fourth = res.data[3].wea.split("转");
+                var fiveth = res.data[4].wea.split("转");
+                var sixth = res.data[5].wea.split("转");
+                if (first[0] == "晴") {
+                    $("#firstSun").css("display", "");
+                }
+                else if (first[0] == "多云") {
+                    $("#firstPartly").css("display", "");
+                }
+                else if (first[0] == "阴") {
+                    $("#firstCloudy").css("display", "");
+                }
+                else if (first[0] == "小雨") {
+                    $("#firstRain").css("display", "");
+                }
+                else if (first[0] == "大雨" || first[0] == "中雨" || first[0] == "暴雨" || first[0] == "特大暴雨") {
+                    $("#firstSleet").css("display", "");
+                }
+                else if (first[0].indexOf("雪") != -1) {
+                    $("#firstSnow").css("display", "");
+                }
+                //第二天
+                if (second[0] == "晴") {
+                    $("#secondSun").css("display", "");
+                }
+                else if (second[0] == "多云") {
+                    $("#secondPartly").css("display", "");
+                }
+                else if (second[0] == "阴") {
+                    $("#secondCloudy").css("display", "");
+                }
+                else if (second[0] == "小雨") {
+                    $("#secondRain").css("display", "");
+                }
+                else if (second[0] == "大雨" || second[0] == "中雨" || second[0] == "暴雨" || second[0] == "特大暴雨") {
+                    $("#secondSleet").css("display", "");
+                }
+                else if (second[0].indexOf("雪") != -1) {
+                    $("#secondSnow").css("display", "");
+                }
+                //第三天
+                if (third[0] == "晴") {
+                    $("#thirdSun").css("display", "");
+                }
+                else if (third[0] == "多云") {
+                    $("#thirdPartly").css("display", "");
+                }
+                else if (third[0] == "阴") {
+                    $("#thirdCloudy").css("display", "");
+                }
+                else if (third[0] == "小雨") {
+                    $("#thirdRain").css("display", "");
+                }
+                else if (third[0] == "大雨" || third[0] == "中雨" || third[0] == "暴雨" || third[0] == "特大暴雨") {
+                    $("#thirdSleet").css("display", "");
+                }
+                else if (third[0].indexOf("雪") != -1) {
+                    $("#thirdSnow").css("display", "");
+                }
+                //第四天
+                if (fourth[0] == "晴") {
+                    $("#fourthSun").css("display", "");
+                }
+                else if (fourth[0] == "多云") {
+                    $("#fourthPartly").css("display", "");
+                }
+                else if (fourth[0] == "阴") {
+                    $("#fourthCloudy").css("display", "");
+                }
+                else if (fourth[0] == "小雨") {
+                    $("#fourthRain").css("display", "");
+                }
+                else if (fourth[0] == "大雨" || fourth[0] == "中雨" || fourth[0] == "暴雨" || fourth[0] == "特大暴雨") {
+                    $("#fourthSleet").css("display", "");
+                }
+                else if (fourth[0].indexOf("雪") != -1) {
+                    $("#fourthSnow").css("display", "");
+                }
+                //第五天
+                if (fiveth[0] == "晴") {
+                    $("#fivethSun").css("display", "");
+                }
+                else if (fiveth[0] == "多云") {
+                    $("#fivethPartly").css("display", "");
+                }
+                else if (fiveth[0] == "阴") {
+                    $("#fivethCloudy").css("display", "");
+                }
+                else if (fiveth[0] == "小雨") {
+                    $("#fivethRain").css("display", "");
+                }
+                else if (fiveth[0] == "大雨" || fiveth[0] == "中雨" || fiveth[0] == "暴雨" || fiveth[0] == "特大暴雨") {
+                    $("#fivethSleet").css("display", "");
+                }
+                else if (fiveth[0].indexOf("雪") != -1) {
+                    $("#fivethSnow").css("display", "");
+                }
+                //第六天
+                if (sixth[0] == "晴") {
+                    $("#sixthSun").css("display", "");
+                }
+                else if (sixth[0] == "多云") {
+                    $("#sixthPartly").css("display", "");
+                }
+                else if (sixth[0] == "阴") {
+                    $("#sixthCloudy").css("display", "");
+                }
+                else if (sixth[0] == "小雨") {
+                    $("#sixthRain").css("display", "");
+                }
+                else if (sixth[0] == "大雨" || sixth[0] == "中雨" || sixth[0] == "暴雨" || sixth[0] == "特大暴雨") {
+                    $("#sixthSleet").css("display", "");
+                }
+                else if (sixth[0].indexOf("雪") != -1) {
+                    $("#sixthSnow").css("display", "");
+                }
+
+                //实时天气
+                $("#li_1").text(res.data[0].hours[0].day);
+                $("#li_2").text(res.data[0].hours[1].day);
+                $("#li_3").text(res.data[0].hours[2].day);
+                $("#li_4").text(res.data[0].hours[3].day);
+                $("#li_5").text(res.data[1].hours[0].day);
+                $("#li_6").text(res.data[1].hours[1].day);
+                $("#li_7").text(res.data[1].hours[2].day);
+                $("#li_8").text(res.data[1].hours[3].day);
+
+                $("#p_1").text("[" + res.data[0].hours[0].wea + "]");
+                $("#p_2").text("[" + res.data[0].hours[1].wea + "]");
+                $("#p_3").text("[" + res.data[0].hours[2].wea + "]");
+                $("#p_4").text("[" + res.data[0].hours[3].wea + "]");
+                $("#p_5").text("[" + res.data[1].hours[0].wea + "]");
+                $("#p_6").text("[" + res.data[1].hours[1].wea + "]");
+                $("#p_7").text("[" + res.data[1].hours[2].wea + "]");
+                $("#p_8").text("[" + res.data[1].hours[3].wea + "]");
+                if (res.data[0].hours[0].day.split("日")[1].indexOf("20") == -1) {
+                    $("#li_1").text(res.data[0].hours[0].day);
+                    $("#li_2").text(res.data[0].hours[1].day);
+                    $("#li_3").text(res.data[0].hours[2].day);
+                    $("#li_4").text(res.data[0].hours[3].day);
+                    $("#li_5").text(res.data[0].hours[4].day);
+                    $("#li_6").text(res.data[0].hours[5].day);
+                    $("#li_7").text(res.data[0].hours[6].day);
+                    $("#li_8").text(res.data[0].hours[7].day);
+
+                    $("#p_1").text("[" + res.data[0].hours[0].wea + "]");
+                    $("#p_2").text("[" + res.data[0].hours[1].wea + "]");
+                    $("#p_3").text("[" + res.data[0].hours[2].wea + "]");
+                    $("#p_4").text("[" + res.data[0].hours[3].wea + "]");
+                    $("#p_5").text("[" + res.data[0].hours[4].wea + "]");
+                    $("#p_6").text("[" + res.data[0].hours[5].wea + "]");
+                    $("#p_7").text("[" + res.data[0].hours[6].wea + "]");
+                    $("#p_8").text("[" + res.data[0].hours[7].wea + "]");
+                }
+
+                //空气指数
+                var air = res.data[0].air;
+                if (air <= 100) {
+                    $("#1").css("display", "");
+                    $("#air_1").text("空气指数:" + res.data[0].air_level);
+                }
+                else if (air > 100 && air <= 150) {
+                    $("#2").css("display", "");
+                    $("#air_2").text("空气指数:" + res.data[0].air_level);
+                }
+                else if (air > 150 && air <= 200) {
+                    $("#3").css("display", "");
+                    $("#air_3").text("空气指数:" + res.data[0].air_level);
+                }
+                else if (air > 200) {
+                    $("#4").css("display", "");
+                    $("#air_4").text("空气指数:" + res.data[0].air_level);
+                }
+
+                //紫外线指数
+                var ray = res.data[0].index[0].level;
+                if (ray.indexOf("最弱") != -1) {
+                    $("#00").css("display", "");
+                    $("#ray_0").text("紫外线指数:" + ray);
+                }
+                else if (ray.indexOf("弱") != -1) {
+                    $("#11").css("display", "");
+                    $("#ray_1").text("紫外线指数:" + ray);
+                }
+                else if (ray.indexOf("中等") != -1) {
+                    $("#22").css("display", "");
+                    $("#ray_2").text("紫外线指数:" + ray);
+                }
+                else if (ray.indexOf("强") != -1) {
+                    $("#33").css("display", "");
+                    $("#ray_3").text("紫外线指数:" + ray);
+                }
+
+                //穿衣指数
+                var clouth = res.data[0].index[3].level;
+                if (clouth.indexOf("冷") != -1) {
+                    $("#111").css("display", "");
+                    $("#clouth_1").text("穿衣指数:" + clouth);
+                }
+                else if (clouth.indexOf("舒适") != -1) {
+                    $("#222").css("display", "");
+                    $("#clouth_2").text("穿衣指数:" + clouth);
+                }
+                else if (clouth.indexOf("热") != -1) {
+                    $("#333").css("display", "");
+                    $("#clouth_3").text("穿衣指数:" + clouth);
+                }
+            }
+        });
+
+    </script>
+</head>
+<body>
+    <div class="modal-shiftfix">
+        <!-- Navigation -->
+        <div class="navbar navbar-fixed-top scroll-hide">
+            <div class="container-fluid top-bar">
+                <div class="pull-right">
+                    <ul class="nav navbar-nav pull-right">
+                        <li class="dropdown settings hidden-xs">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <span aria-hidden="true" class="se7en-gear"></span>
+                                <div class="sr-only">
+                                    Settings
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="settings-link blue" href="javascript:chooseStyle('none', 30)"><span></span>天空蓝</a>
+                                </li>
+                                <li>
+                                    <a class="settings-link green" href="javascript:chooseStyle('green-theme', 30)"><span></span>森林绿</a>
+                                </li>
+                                <li>
+                                    <a class="settings-link orange" href="javascript:chooseStyle('orange-theme', 30)"><span></span>橘子黄</a>
+                                </li>
+                                <li>
+                                    <a class="settings-link magenta" href="javascript:chooseStyle('magenta-theme', 30)"><span></span>罗兰紫</a>
+                                </li>
+                                <li>
+                                    <a class="settings-link gray" href="javascript:chooseStyle('gray-theme', 30)"><span></span>星空灰</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown user hidden-xs">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <img width="34" height="34" src="images/avatar-male.jpg" />邵志<b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-user"></i>我的账户
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-gear"></i>我的消息
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="Login.aspx">
+                                        <i class="icon-signout"></i>退出登陆
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <button class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="logo" href="index-2.html">se7en</a>
+            </div>
+            <div class="container-fluid main-nav clearfix">
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li>
+                            <a href="../HS_3DMountain/3DMountain">
+                                <span aria-hidden="true" class=" icon-globe"></span>3D黄山
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../HS_Map/Map">
+                                <span aria-hidden="true" class="icon-map-marker"></span>我的定位
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../HS_Weather/Weather" class="current">
+                                <span aria-hidden="true" class="icon-sun"></span>黄山天气
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../HS_MapLoad/MapLoad">
+                                <span aria-hidden="true" class="icon-folder-close-alt"></span>地图下载
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" href="#">
+                                <span aria-hidden="true" class="icon-plane"></span>攻略<b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../HS_Strategy/Strategy">浏览</a>
+                                </li>
+                                <li>
+                                    <a href="../HS_Strategy/NewStrategy">编写</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="../HS_Photo/Photo">
+                                <span aria-hidden="true" class="icon-camera-retro"></span>美景
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../HS_About/About">
+                                <span aria-hidden="true" class="icon-paper-clip"></span>关于
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" href="#">
+                                <span aria-hidden="true" class="icon-star-empty"></span>我自己<b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../HS_MySelf/Home">主页</a>
+                                </li>
+                                <li>
+                                    <a href="../HS_MySelf/Calendar">便签</a>
+                                </li>
+                                <li>
+                                    <a href="../HS_MySelf/FeedBack">信息反馈</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- End Navigation -->
+        <div class="container-fluid main-content">
+            <div class="page-title">
+                <div class="widget-container fluid-height clearfix">
+                    <h1 style="font-size:20px" class="heading">
+                        天气预报:<span style="font-size:15px">(黄山区)</span>
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Weather -->
+                <div class="col-lg-12">
+                    <div class="widget-container weather">
+                        <div class="widget-content padded">
+                            <div class="row text-center">
+                                <div class="col-sm-2 col-xs-4" id="text">
+                                    <span id="first">
+                                        MON
+                                    </span><span id="weather_0">[大雪]</span>
+                                    <canvas class="skycons-element" data-skycons="CLEAR_DAY" height="60" id="firstSun" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="PARTLY_CLOUDY_DAY" height="60" id="firstPartly" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="CLOUDY" height="60" id="firstCloudy" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="RAIN" height="60" id="firstRain" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="SLEET" height="60" id="firstSleet" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="SNOW" height="60" id="firstSnow" width="60" style="display:none;"></canvas>
+                                    <div class="number">
+                                        <span id="firstTe">10</span>
+                                        <small>&deg;</small>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 col-xs-4">
+                                    <span id="second">
+                                        TUE
+                                    </span><span id="weather_1">[大雪]</span>
+                                    <canvas class="skycons-element" data-skycons="CLEAR_DAY" height="60" id="secondSun" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="PARTLY_CLOUDY_DAY" height="60" id="secondPartly" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="CLOUDY" height="60" id="secondCloudy" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="RAIN" height="60" id="secondRain" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="SLEET" height="60" id="secondSleet" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="SNOW" height="60" id="secondSnow" width="60" style="display:none;"></canvas>
+                                    <div class="number">
+                                        <span id="secondTe">10</span><small>&deg;</small>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 col-xs-4">
+                                    <span id="third">
+                                        WED
+                                    </span><span id="weather_2">[大雪]</span>
+                                    <canvas class="skycons-element" data-skycons="CLEAR_DAY" height="60" id="thirdSun" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="PARTLY_CLOUDY_DAY" height="60" id="thirdPartly" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="CLOUDY" height="60" id="thirdCloudy" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="RAIN" height="60" id="thirdRain" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="SLEET" height="60" id="thirdSleet" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="SNOW" height="60" id="thirdSnow" width="60" style="display:none;"></canvas>
+                                    <div class="number">
+                                        <span id="thirdTe">10</span><small>&deg;</small>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 hidden-xs">
+                                    <span id="fourth">
+                                        THU
+                                    </span><span id="weather_3">[大雪]</span>
+                                    <canvas class="skycons-element" data-skycons="CLEAR_DAY" height="60" id="fourthSun" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="PARTLY_CLOUDY_DAY" height="60" id="fourthPartly" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="CLOUDY" height="60" id="fourthCloudy" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="RAIN" height="60" id="fourthRain" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="SLEET" height="60" id="fourthSleet" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="SNOW" height="60" id="fourthSnow" width="60" style="display:none;"></canvas>
+                                    <div class="number">
+                                        <span id="fourthTe">10</span><small>&deg;</small>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 hidden-xs">
+                                    <span id="fiveth">
+                                        FRI
+                                    </span><span id="weather_4">[大雪]</span>
+                                    <canvas class="skycons-element" data-skycons="CLEAR_DAY" height="60" id="fivethSun" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="PARTLY_CLOUDY_DAY" height="60" id="fivethPartly" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="CLOUDY" height="60" id="fivethCloudy" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="RAIN" height="60" id="fivethRain" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="SLEET" height="60" id="fivethSleet" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="SNOW" height="60" id="fivethSnow" width="60" style="display:none;"></canvas>
+                                    <div class="number">
+                                        <span id="fivethTe">10</span><small>&deg;</small>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 hidden-xs">
+                                    <span id="sixth">
+                                        SAT
+                                    </span><span id="weather_5">[大雪]</span>
+                                    <canvas class="skycons-element" data-skycons="CLEAR_DAY" height="60" id="sixthSun" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="PARTLY_CLOUDY_DAY" height="60" id="sixthPartly" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="CLOUDY" height="60" id="sixthCloudy" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="RAIN" height="60" id="sixthRain" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="SLEET" height="60" id="sixthSleet" width="60" style="display:none;"></canvas>
+                                    <canvas class="skycons-element" data-skycons="SNOW" height="60" id="sixthSnow" width="60" style="display:none;"></canvas>
+                                    <div class="number">
+                                        <span id="sixthTe">10</span><small>&deg;</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Line Chart -->
+                <div class="col-lg-6">
+                    <div class="widget-container">
+                        <div class="heading">
+                            <i class="icon-bar-chart"></i>实时温度-天气
+                        </div>
+                        <div class="widget-content padded">
+                            <div class="chart-graph line-chart">
+                                <div id="linechart-2">
+                                    Loading...
+                                </div>
+                                <ul class="chart-text-axis" id="li">
+                                    <li style="width:4%;text-align:left;">
+                                        <span id="li_1">23日08时</span><p id="p_1" style="height:33px"></p>
+                                    </li>
+                                    <li style="width:13%;text-align:right;">
+                                        <span id="li_2">23日08时</span><p id="p_2"></p>
+                                    </li>
+                                    <li style="width:14%;text-align:right;">
+                                        <span id="li_3">23日08时</span><p id="p_3"></p>
+                                    </li>
+                                    <li style="width:14.5%;text-align:right;">
+                                        <span id="li_4">23日08时</span><p id="p_4"></p>
+                                    </li>
+                                    <li style="width:14%;text-align:right;">
+                                        <span id="li_5">23日08时</span><p id="p_5"></p>
+                                    </li>
+                                    <li style="width:14%;text-align:right;">
+                                        <span id="li_6">23日08时</span><p id="p_6"></p>
+                                    </li>
+                                    <li style="width:14%;text-align:right;">
+                                        <span id="li_7">23日08时</span><p id="p_7"></p>
+                                    </li>
+                                    <li style="width:8%;">.</li>
+                                    <li style="width:4%;text-align:right;">
+                                        <span id="li_8">23日08时</span><p id="p_8"></p>
+                                    </li>
+                                </ul>
+                                <!-- end Line Chart -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Donut Charts -->
+                <div class="col-md-6">
+                    <div class="widget-container">
+                        <div class="heading">
+                            <i class="icon-bar-chart"></i>天气指数
+                        </div><br /><br />
+                        <div class="widget-content clearfix">
+                            <div class="col-sm-4">
+                                <div class="pie-chart1 pie-chart pie-number" data-percent="100" id="1" style="display:none;">
+                                    <p style="font-size:20px;letter-spacing:3px" id="air_1">空气指数:良</p>
+                                </div>
+                                <div class="pie-chart12 pie-chart pie-number" data-percent="100" id="2" style="display:none;">
+                                    <p style="font-size:20px;letter-spacing:3px" id="air_2">空气指数:良</p>
+                                </div>
+                                <div class="pie-chart13 pie-chart pie-number" data-percent="100" id="3" style="display:none;">
+                                    <p style="font-size:20px;letter-spacing:3px" id="air_3">空气指数:良</p>
+                                </div>
+                                <div class="pie-chart14 pie-chart pie-number" data-percent="100" id="4" style="display:none;">
+                                    <p style="font-size:20px;letter-spacing:3px" id="air_4">空气指数:良</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="pie-chart2 pie-chart pie-number" data-percent="5" id="00" style="display:none;">
+                                    <p style="font-size:20px;letter-spacing:3px" id="ray_0">紫外线指数:最弱</p>
+                                </div>
+                                <div class="pie-chart2 pie-chart pie-number" data-percent="25" id="11" style="display:none;">
+                                    <p style="font-size:20px;letter-spacing:3px" id="ray_1">紫外线指数:弱</p>
+                                </div>
+                                <div class="pie-chart2 pie-chart pie-number" data-percent="50" id="22" style="display:none;">
+                                    <p style="font-size:20px;letter-spacing:3px" id="ray_2">紫外线指数:中等</p>
+                                </div>
+                                <div class="pie-chart2 pie-chart pie-number" data-percent="75" id="33" style="display:none;">
+                                    <p style="font-size:20px;letter-spacing:3px" id="ray_3">紫外线指数:强</p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="pie-chart3 pie-chart pie-number" data-percent="75" id="111" style="display:none;">
+                                    <p style="font-size:20px;letter-spacing:3px" id="clouth_1">穿衣指数:较冷</p>
+                                </div>
+                                <div class="pie-chart3 pie-chart pie-number" data-percent="50" id="222" style="display:none;">
+                                    <p style="font-size:20px;letter-spacing:3px" id="clouth_2">穿衣指数:较舒适</p>
+                                </div>
+                                <div class="pie-chart3 pie-chart pie-number" data-percent="25" id="333" style="display:none;">
+                                    <p style="font-size:20px;letter-spacing:3px" id="clouth_3">穿衣指数:较热</p>
+                                </div>
+                            </div>
+                        </div><br /><br /><br />
+                    </div>
+
+                    <div class="progress">
+                        <div class="progress-bar progress-bar" style="width: 33%"></div>
+                        <div class="progress-bar progress-bar-warning" style="width: 34%"></div>
+                        <div class="progress-bar progress-bar-success" style="width: 33%"></div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Area Charts:Morris -->
+                <div class="col-md-8">
+                    <div class="widget-container">
+                        <div class="heading">
+                            <i class="icon-bar-chart"></i>历史天气
+                        </div><br />
+                        <div class="widget-content padded">
+                            <div class="chart-graph line-chart">
+                                <div id="linechart-1">
+                                    Loading...
+                                </div>
+                                <ul class="chart-text-axis" id="">
+                                    <li style="width:6%;text-align:left;">
+                                        <span id="d1">5月10日</span><p id="type_1" style="height:2px;color:#0094ff">[多云转小雨]</p><p id="w1" style="height:10px">[东风<3级]</p>
+                                    </li>
+                                    <li style="width:7%;text-align:right;">
+                                        <span id="d2">23日08时</span><p id="type_2" style="height:2px;color:#0094ff">[多云转小雨]</p><p id="w2" style="height:10px">[东风<3级]</p>
+                                    </li>
+                                    <li style="width:11.3%;text-align:right;">
+                                        <span id="d3">23日08时</span><p id="type_3" style="height:2px;color:#0094ff">[多云转小雨]</p><p id="w3" style="height:10px">[东风<3级]</p>
+                                    </li>
+                                    <li style="width:10.7%;text-align:right;">
+                                        <span id="d4">23日08时</span><p id="type_4" style="height:2px;color:#0094ff">[多云转小雨]</p><p id="w4" style="height:10px">[东风<3级]</p>
+                                    </li>
+                                    <li style="width:11%;text-align:right;">
+                                        <span id="d5">23日08时</span><p id="type_5" style="height:2px;color:#0094ff">[多云转小雨]</p><p id="w5" style="height:10px">[东风<3级]</p>
+                                    </li>
+                                    <li style="width:11%;text-align:right;">
+                                        <span id="d6">23日08时</span><p id="type_6" style="height:2px;color:#0094ff">[多云转小雨]</p><p id="w6" style="height:10px">[东风<3级]</p>
+                                    </li>
+                                    <li style="width:11%;text-align:right;">
+                                        <span id="d7">23日08时</span><p id="type_7" style="height:2px;color:#0094ff">[多云转小雨]</p><p id="w7" style="height:10px">[东风<3级]</p>
+                                    </li>
+                                    <li style="width:11%;text-align:right;">
+                                        <span id="d8">23日08时</span><p id="type_8" style="height:2px;color:#0094ff">[多云转小雨]</p><p id="w8" style="height:10px">[东风<3级]</p>
+                                    </li>
+                                    <li style="width:11%;text-align:right;">
+                                        <span id="d9">23日08时</span><p id="type_9" style="height:2px;color:#0094ff">[多云转小雨]</p><p id="w9" style="height:10px">[东风<3级]</p>
+                                    </li>
+                                    <li style="width:4%;">.</li>
+                                    <li style="width:6%;text-align:right;">
+                                        <span id="d10">23日08时</span><p id="type_10" style="height:2px;color:#0094ff">[多云转小雨]</p><p id="w10" style="height:10px">[东风<3级]</p>
+                                    </li>
+                                </ul>
+                                <!-- end Line Chart -->
+                            </div><hr />
+                        </div>
+                    </div>
+                </div>
+                <!-- Area Charts:Morris -->
+                <!-- end Donut Charts --><!-- Pie Chart -->
+                <div class="col-md-4">
+                    <div class="widget-container">
+                        <div class="heading">
+                            <i class="icon-bar-chart"></i>历史统计
+                        </div><br /><br />
+                        <div class="widget-content padded">
+                            <div class="pie-chart">
+                                <div id="pie-chart"></div>
+                                <ul class="chart-key">
+                                    <li>
+                                        <span class="green"></span>雨天
+                                    </li>
+                                    <li>
+                                        <span class="orange"></span>多云
+                                    </li>
+                                    <li>
+                                        <span class="red"></span>晴天
+                                    </li>
+                                    <li>
+                                        <span class="blue"></span>雪天
+                                    </li>
+                                </ul>
+                            </div>
+                        </div><br /><br /><br /><br />
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar" style="width: 33%"></div>
+                        <div class="progress-bar progress-bar-warning" style="width: 34%"></div>
+                        <div class="progress-bar progress-bar-success" style="width: 33%"></div>
+                    </div>
+                </div>
+                <!-- end Pie Chart -->
+
+            </div>
+
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    $.ajax({
+        type: 'post',
+        url: '../HS_Weather/WeatherBusiness2',
+        data: { judge: "second" },
+        dataType: 'JSON',
+        error: function () {
+            alert("服务器出错！");
+        },
+        success: function (data){
+            var TYPE = data.TYPE.split("*");
+            var Date = data.Date.split("*");
+            var WinD = data.WindD.split("*");
+            var WinS = data.WindS.split("*");
+            for (var i = 0; i < WinS.length-1; i++) {
+                if (WinS[i].indexOf("级") == -1) {
+                    WinS[i] += "级";
+                }
+            }
+            $("#type_1").text("[" + TYPE[TYPE.length - 14] + "]");
+            $("#type_2").text("[" + TYPE[TYPE.length - 13] + "]");
+            $("#type_3").text("[" + TYPE[TYPE.length - 12] + "]");
+            $("#type_4").text("[" + TYPE[TYPE.length - 11] + "]");
+            $("#type_5").text("[" + TYPE[TYPE.length - 10] + "]");
+            $("#type_6").text("[" + TYPE[TYPE.length - 9] + "]");
+            $("#type_7").text("[" + TYPE[TYPE.length - 8] + "]");
+            $("#type_8").text("[" + TYPE[TYPE.length - 7] + "]");
+            $("#type_9").text("[" + TYPE[TYPE.length - 6] + "]");
+            $("#type_10").text("[" + TYPE[TYPE.length - 5] + "]");
+
+            $("#d1").text(Date[Date.length - 14]);
+            $("#d2").text(Date[Date.length - 13]);
+            $("#d3").text(Date[Date.length - 12]);
+            $("#d4").text(Date[Date.length - 11]);
+            $("#d5").text(Date[Date.length - 10]);
+            $("#d6").text(Date[Date.length - 9]);
+            $("#d7").text(Date[Date.length - 8]);
+            $("#d8").text(Date[Date.length - 7]);
+            $("#d9").text(Date[Date.length - 6]);
+            $("#d10").text(Date[Date.length - 5]);
+
+            $("#w1").text("[" + WinD[WinD.length - 14] + WinS[WinS.length - 14] + "]");
+            $("#w2").text("[" + WinD[WinD.length - 13] + WinS[WinS.length - 13] + "]");
+            $("#w3").text("[" + WinD[WinD.length - 12] + WinS[WinS.length - 12] + "]");
+            $("#w4").text("[" + WinD[WinD.length - 11] + WinS[WinS.length - 11] + "]");
+            $("#w5").text("[" + WinD[WinD.length - 10] + WinS[WinS.length - 10] + "]");
+            $("#w6").text("[" + WinD[WinD.length - 9] + WinS[WinS.length - 9] + "]");
+            $("#w7").text("[" + WinD[WinD.length - 8] + WinS[WinS.length - 8] + "]");
+            $("#w8").text("[" + WinD[WinD.length - 7] + WinS[WinS.length - 7] + "]");
+            $("#w9").text("[" + WinD[WinD.length - 6] + WinS[WinS.length - 6] + "]");
+            $("#w10").text("[" + WinD[WinD.length - 5] + WinS[WinS.length - 5] + "]");
+        }
+    });
+</script>
+</html>
+

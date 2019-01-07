@@ -1,0 +1,488 @@
+﻿
+@{
+    ViewBag.Title = "Strategy";
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>攻略</title>
+    <!--<link href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700" media="all" rel="stylesheet" type="text/css" />-->
+    <link href="../stylesheets/bootstrap.min.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/font-awesome.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/se7en-font.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/isotope.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/jquery.fancybox.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/fullcalendar.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/wizard.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/select2.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/morris.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/datatables.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/datepicker.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/timepicker.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/colorpicker.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/bootstrap-switch.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/daterange-picker.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/typeahead.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/summernote.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/pygments.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/style.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/color/green.css" media="all" rel="alternate stylesheet" title="green-theme" type="text/css" />
+    <link href="../stylesheets/color/orange.css" media="all" rel="alternate stylesheet" title="orange-theme" type="text/css" />
+    <link href="../stylesheets/color/magenta.css" media="all" rel="alternate stylesheet" title="magenta-theme" type="text/css" />
+    <link href="../stylesheets/color/gray.css" media="all" rel="alternate stylesheet" title="gray-theme" type="text/css" />
+    <script src="../javascripts/jquery.min.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery-ui.js" type="text/javascript"></script>
+    <script src="../javascripts/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../javascripts/raphael.min.js" type="text/javascript"></script>
+    <script src="../javascripts/selectivizr-min.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.mousewheel.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.vmap.min.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.vmap.sampledata.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.vmap.world.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.bootstrap.wizard.js" type="text/javascript"></script>
+    <script src="../javascripts/fullcalendar.min.js" type="text/javascript"></script>
+    <script src="../javascripts/gcal.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="../javascripts/datatable-editable.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.easy-pie-chart.js" type="text/javascript"></script>
+    <script src="../javascripts/excanvas.min.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.isotope.min.js" type="text/javascript"></script>
+    <script src="../javascripts/isotope_extras.js" type="text/javascript"></script>
+    <script src="../javascripts/modernizr.custom.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.fancybox.pack.js" type="text/javascript"></script>
+    <script src="../javascripts/select2.js" type="text/javascript"></script>
+    <script src="../javascripts/styleswitcher.js" type="text/javascript"></script>
+    <script src="../javascripts/wysiwyg.js" type="text/javascript"></script>
+    <script src="../javascripts/summernote.min.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.inputmask.min.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.validate.js" type="text/javascript"></script>
+    <script src="../javascripts/bootstrap-fileupload.js" type="text/javascript"></script>
+    <script src="../javascripts/bootstrap-datepicker.js" type="text/javascript"></script>
+    <script src="../javascripts/bootstrap-timepicker.js" type="text/javascript"></script>
+    <script src="../javascripts/bootstrap-colorpicker.js" type="text/javascript"></script>
+    <script src="../javascripts/bootstrap-switch.min.js" type="text/javascript"></script>
+    <script src="../javascripts/typeahead.js" type="text/javascript"></script>
+    <script src="../javascripts/daterange-picker.js" type="text/javascript"></script>
+    <script src="../javascripts/date.js" type="text/javascript"></script>
+    <script src="../javascripts/morris.min.js" type="text/javascript"></script>
+    <script src="../javascripts/skycons.js" type="text/javascript"></script>
+    <script src="../javascripts/fitvids.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.sparkline.min.js" type="text/javascript"></script>
+    <script src="../javascripts/main.js" type="text/javascript"></script>
+    <script src="../javascripts/respond.js" type="text/javascript"></script>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+
+</head>
+<body>
+    <div class="modal-shiftfix">
+        <!-- Navigation -->
+        <div class="navbar navbar-fixed-top scroll-hide">
+            <div class="container-fluid top-bar">
+                <div class="pull-right">
+                    <ul class="nav navbar-nav pull-right">
+                        <li class="dropdown settings hidden-xs">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <span aria-hidden="true" class="se7en-gear"></span>
+                                <div class="sr-only">
+                                    Settings
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="settings-link blue" href="javascript:chooseStyle('none', 30)"><span></span>天空蓝</a>
+                                </li>
+                                <li>
+                                    <a class="settings-link green" href="javascript:chooseStyle('green-theme', 30)"><span></span>森林绿</a>
+                                </li>
+                                <li>
+                                    <a class="settings-link orange" href="javascript:chooseStyle('orange-theme', 30)"><span></span>橘子黄</a>
+                                </li>
+                                <li>
+                                    <a class="settings-link magenta" href="javascript:chooseStyle('magenta-theme', 30)"><span></span>罗兰紫</a>
+                                </li>
+                                <li>
+                                    <a class="settings-link gray" href="javascript:chooseStyle('gray-theme', 30)"><span></span>星空灰</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown user hidden-xs">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <img width="34" height="34" src="images/avatar-male.jpg" />邵志<b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-user"></i>我的账户
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-gear"></i>我的消息
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="login1.html">
+                                        <i class="icon-signout"></i>退出登陆
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <button class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="logo" href="index-2.html">se7en</a>
+            </div>
+            <div class="container-fluid main-nav clearfix">
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li>
+                            <a href="../HS_3DMountain/3DMountain">
+                                <span aria-hidden="true" class=" icon-globe"></span>3D黄山
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../HS_Map/Map">
+                                <span aria-hidden="true" class="icon-map-marker"></span>我的定位
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../HS_Weather/Weather">
+                                <span aria-hidden="true" class="icon-sun"></span>黄山天气
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../HS_MapLoad/MapLoad">
+                                <span aria-hidden="true" class="icon-folder-close-alt"></span>地图下载
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" href="#" class="current">
+                                <span aria-hidden="true" class="icon-plane"></span>攻略<b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../HS_Strategy/Strategy" class="current">浏览</a>
+                                </li>
+                                <li>
+                                    <a href="../HS_Strategy/NewStrategy">编写</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="../HS_Photo/Photo">
+                                <span aria-hidden="true" class="icon-camera-retro"></span>美景
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../HS_About/About">
+                                <span aria-hidden="true" class="icon-paper-clip"></span>关于
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" href="#">
+                                <span aria-hidden="true" class="icon-star-empty"></span>我自己<b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../HS_MySelf/Home">主页</a>
+                                </li>
+                                <li>
+                                    <a href="../HS_MySelf/Calendar">便签</a>
+                                </li>
+                                <li>
+                                    <a href="../HS_MySelf/FeedBack">信息反馈</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- End Navigation -->
+        <div class="container-fluid main-content">
+            <div class="page-title" style="width:14.5%;text-align:right">
+                <h2 class="text">攻略</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-2">
+                    <div class="panel-group">
+                        <div class="panel filter-categories">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <a class="accordion-toggle" data-parent="#accordion" data-toggle="collapse" href="#collapseThree" style="font-weight:bolder">
+                                        <div class="caret pull-right"></div>
+                                        分类：
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="panel-collapse collapse in" id="collapseThree">
+                                <div class="panel-body">
+
+                                    <button class="btn btn-primary-outline" style="width:100%;text-align:left" id="btn_1">
+                                        <i class="icon-pencil"></i><span>记录写实</span>
+                                    </button>
+                                    <button class="btn btn-success-outline" style="width:100%;text-align:left" id="btn_2">
+                                        <i class="icon-camera"></i><span>游山玩水</span>
+                                    </button>
+                                    <button class="btn btn-info-outline" style="width:100%;text-align:left" id="btn_3">
+                                        <i class="icon-tags"></i><span>旅游指南</span>
+                                    </button>
+                                    <button class="btn btn-warning-outline" style="width:100%;text-align:left" id="btn_4">
+                                        <i class="icon-food"></i><span>特色美食</span>
+                                    </button>
+                                    <button class="btn btn-danger-outline" style="width:100%;text-align:left" id="btn_5">
+                                        <i class="icon-heart"></i><span>心得体会</span>
+                                    </button>
+                                    <button class="btn btn-default-outline" style="width:100%;text-align:left" id="btn_0">
+                                        <i class="icon-rotate-right"></i><span>显示全部</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="panel filter-categories">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <a class="accordion-toggle" data-parent="#accordion" data-toggle="collapse" href="#opera" style="font-weight:bolder">
+                                        <div class="caret pull-right"></div>
+                                        面板：
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="panel-collapse collapse in" id="opera">
+                                <div class="panel-body">
+                                    <button class="btn btn-default-outline" style="width:100%">查看相册</button>
+                                    <button class="btn btn-default-outline" style="width:100%">编写攻略</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="well selected-filters" id="bar">
+                        <div class="label label-default" style="border-radius: 2px">显示全部</div>
+                    </div>
+                    <div class="panel-group" id="accordion">
+                    </div>
+                    <br />
+                    <div class="btn btn-lg btn-default-outline btn-block" id="more">加载更多</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    var strategyArr = null;
+    $(function () {
+        $.ajax({
+            type: "POST",
+            url: '../HS_Strategy/StrategyBusiness',
+            data: {judge:"first"},
+            dataType: 'text',
+            error: function () {
+                alert("获取错误！");
+            },
+            success: function (data) {
+                var Arr = data;
+                strategyArr = Arr.split("┇");
+                var row = null;
+                var reg = /[\u4e00-\u9fa5\u3002\uff1b\uff0c\uff1a\u201c\u201d\uff08\uff09\u3001\uff1f\u300a\u300b]/g;//构建正则表达式（包含汉字和汉字符号）
+                for (var i = 0; i < strategyArr.length - 1; i++) {
+                    row = strategyArr[i].split("✶");
+                    if (row[4].indexOf("顶置") != -1 && row[4].indexOf("精华") != -1) {
+                        $("#accordion").append('<div class="panel filter-categories"><div class="panel-heading"><div class="panel-title"><a class="accordion-toggle" data-parent="#accordion" data-toggle="collapse" href="#collapse' + row[0] + '" ><div class="caret pull-right"></div><span class="label label-info" style="font-size:10px;font-weight:bolder;border-radius: 4px">顶置</span><span class="label label-danger" style="font-size:9px;font-weight:bolder;border-radius: 4px">精华</span><span style="font-weight:bolder;color:#4497c5">' + row[1] + '&nbsp;&nbsp;&nbsp;<span class="icon-picture" style="color:#888888"></span></span></a></div></div><div class="panel-collapse collapse" id="collapse' + row[0] + '"><div class="panel-body"><span style="width:85%" class="col-lg-1">' + row[3].match(reg).join("").substring(0, 200) + ' . . .</span><img style="width:15%;" src="' + row[2] + '" /><a href="Detail?id=' + row[0] + '" style="width:85%" class="col-lg-1">点击查看详情</a></div></div></div>');
+                    }
+                }
+                for (var i = 0; i < strategyArr.length - 1; i++) {
+                    row = strategyArr[i].split("✶");
+                    if (row[4].indexOf("顶置") != -1 && row[4].indexOf("精华") == -1) {
+                        $("#accordion").append('<div class="panel filter-categories"><div class="panel-heading"><div class="panel-title"><a class="accordion-toggle" data-parent="#accordion" data-toggle="collapse" href="#collapse' + row[0] + '" ><div class="caret pull-right"></div><span class="label label-info" style="font-size:10px;font-weight:bolder;border-radius: 4px">顶置</span><span style="font-weight:bolder;color:#4497c5">' + row[1] + '&nbsp;&nbsp;&nbsp;<span class="icon-picture" style="color:#888888"></span></span></a></div></div><div class="panel-collapse collapse" id="collapse' + row[0] + '"><div class="panel-body"><span style="width:85%" class="col-lg-1">' + row[3].match(reg).join("").substring(0, 200) + ' . . .</span><img style="width:15%;" src="' + row[2] + '" /><a href="Detail?id=' + row[0] + '" style="width:85%" class="col-lg-1">点击查看详情</a></div></div></div>');
+                    }
+                }
+                for (var i = 0; i < strategyArr.length - 1; i++) {
+                    row = strategyArr[i].split("✶");
+                    if (row[4].indexOf("顶置") == -1 && row[4].indexOf("精华") != -1) {
+                        $("#accordion").append('<div class="panel filter-categories"><div class="panel-heading"><div class="panel-title"><a class="accordion-toggle" data-parent="#accordion" data-toggle="collapse" href="#collapse' + row[0] + '" ><div class="caret pull-right"></div><span class="label label-danger" style="font-size:9px;font-weight:bolder;border-radius: 4px">精华</span><span style="font-weight:bolder;color:#4497c5">' + row[1] + '&nbsp;&nbsp;&nbsp;<span class="icon-picture" style="color:#888888"></span></span></a></div></div><div class="panel-collapse collapse" id="collapse' + row[0] + '"><div class="panel-body"><span style="width:85%" class="col-lg-1">' + row[3].match(reg).join("").substring(0, 200) + ' . . .</span><img style="width:15%;" src="' + row[2] + '" /><a href="Detail?id=' + row[0] + '" style="width:85%" class="col-lg-1">点击查看详情</a></div></div></div>');
+                    }
+                }
+                for (var i = strategyArr.length - 2; i >=0 ; i--) {
+                    row = strategyArr[i].split("✶");
+                    if (row[4].indexOf("顶置") == -1 && row[4].indexOf("精华") == -1) {
+                        $("#accordion").append('<div class="panel filter-categories"><div class="panel-heading"><div class="panel-title"><a class="accordion-toggle" data-parent="#accordion" data-toggle="collapse" href="#collapse' + row[0] + '" ><div class="caret pull-right"></div><span style="font-weight:bolder;color:#4497c5">' + row[1] + '&nbsp;&nbsp;&nbsp;<span class="icon-picture" style="color:#888888"></span></span></a></div></div><div class="panel-collapse collapse" id="collapse' + row[0] + '"><div class="panel-body"><span style="width:85%" class="col-lg-1">' + row[3].match(reg).join("").substring(0, 200) + ' . . .</span><img style="width:15%;" src="' + row[2] + '" /><a href="Detail?id=' + row[0] + '"  style="width:85%" class="col-lg-1">点击查看详情</a></div></div></div>');
+                    }
+                }
+                $("#accordion").find(".filter-categories").each(function (i) {
+                    if (i >= 8) {
+                        $(this).css("display", "none");
+                    }
+
+                });
+                $("#accordion").find(".panel-collapse").eq(0).attr("class", "panel-collapse collapse in");
+
+            }
+        });
+
+    });
+    $("#btn_0").click(function () {
+        $("#bar").html("");
+        $("#bar").append('<div class="label label-default" style="border-radius: 2px">显示全部</div>');
+        $("#more").attr("class", "btn btn-lg btn-default-outline btn-block");
+        var row = null;
+        for (var i = 0; i < strategyArr.length - 1; i++) {
+            $("#accordion").find(".filter-categories").eq(i).css("display", "");
+            if (i > 8) {
+                $("#accordion").find(".filter-categories").eq(i).css("display", "none");
+            }
+            if (i == 0) {
+                $("#accordion").find(".panel-collapse").eq(i).attr("class", "panel-collapse collapse in");
+            }
+            else {
+                $("#accordion").find(".panel-collapse").eq(i).attr("class", "panel-collapse collapse");
+            }
+        }
+    })
+    $("#btn_1").click(function () {
+        $("#bar").html("");
+        $("#bar").append('<div class="label label-primary" style="border-radius: 2px">记录写实</div>');
+        $("#more").attr("class", "btn btn-lg btn-primary-outline btn-block");
+        var row = null;
+        var num = 0;
+        for (var i = 0; i < strategyArr.length - 1; i++) {
+            row = strategyArr[i].split("✶");
+            if (row[4].indexOf("记录写实") != -1) {
+                num++;
+                $("#accordion").find(".filter-categories").eq(i).css("display", "");
+                if (num == 1) {
+                    $("#accordion").find(".panel-collapse").eq(i).attr("class", "panel-collapse collapse in");
+                }
+                else {
+                    $("#accordion").find(".panel-collapse").eq(i).attr("class", "panel-collapse collapse");
+                }
+            }
+            else {
+                $("#accordion").find(".filter-categories").eq(i).css("display", "none");
+            }
+            if (i > 8) {
+                $("#accordion").find(".filter-categories").eq(i).css("display", "none");
+            }
+        }
+    })
+    $("#btn_2").click(function () {
+        $("#bar").html("");
+        $("#bar").append('<div class="label label-success" style="border-radius: 2px">游山玩水</div>');
+        $("#more").attr("class", "btn btn-lg btn-success-outline btn-block");
+        var row = null;
+        var num = 0;
+        for (var i = 0; i < strategyArr.length - 1; i++) {
+            row = strategyArr[i].split("✶");
+            if (row[4].indexOf("游山玩水") != -1) {
+                num++;
+                $("#accordion").find(".filter-categories").eq(i).css("display", "");
+                if (num == 1) {
+                    $("#accordion").find(".panel-collapse").eq(i).attr("class", "panel-collapse collapse in");
+                }
+                else {
+                    $("#accordion").find(".panel-collapse").eq(i).attr("class", "panel-collapse collapse");
+                }
+            }
+            else {
+                $("#accordion").find(".filter-categories").eq(i).css("display", "none");
+            }
+            if (i > 8) {
+                $("#accordion").find(".filter-categories").eq(i).css("display", "none");
+            }
+        }
+    })
+    $("#btn_3").click(function () {
+        $("#bar").html("");
+        $("#bar").append('<div class="label label-info" style="border-radius: 2px">旅游指南</div>');
+        $("#more").attr("class", "btn btn-lg btn-info-outline btn-block");
+        var row = null;
+        var num = 0;
+        for (var i = 0; i < strategyArr.length - 1; i++) {
+            row = strategyArr[i].split("✶");
+            if (row[4].indexOf("旅游指南") != -1) {
+                num++;
+                $("#accordion").find(".filter-categories").eq(i).css("display", "");
+                if (num == 1) {
+                    $("#accordion").find(".panel-collapse").eq(i).attr("class", "panel-collapse collapse in");
+                }
+                else {
+                    $("#accordion").find(".panel-collapse").eq(i).attr("class", "panel-collapse collapse");
+                }
+            }
+            else {
+                $("#accordion").find(".filter-categories").eq(i).css("display", "none");
+            }
+            if (i > 8) {
+                $("#accordion").find(".filter-categories").eq(i).css("display", "none");
+            }
+        }
+    })
+    $("#btn_4").click(function () {
+        $("#bar").html("");
+        $("#bar").append('<div class="label label-warning" style="border-radius: 2px">特色美食</div>');
+        $("#more").attr("class", "btn btn-lg btn-warning-outline btn-block");
+        var row = null;
+        var num = 0;
+        for (var i = 0; i < strategyArr.length - 1; i++) {
+            row = strategyArr[i].split("✶");
+            if (row[4].indexOf("特色美食") != -1) {
+                num++;
+                $("#accordion").find(".filter-categories").eq(i).css("display", "");
+                if (num == 1) {
+                    $("#accordion").find(".panel-collapse").eq(i).attr("class", "panel-collapse collapse in");
+                }
+                else {
+                    $("#accordion").find(".panel-collapse").eq(i).attr("class", "panel-collapse collapse");
+                }
+            }
+            else {
+                $("#accordion").find(".filter-categories").eq(i).css("display", "none");
+            }
+            if (i > 8) {
+                $("#accordion").find(".filter-categories").eq(i).css("display", "none");
+            }
+        }
+    })
+    $("#btn_5").click(function () {
+        $("#bar").html("");
+        $("#bar").append('<div class="label label-danger" style="border-radius: 2px">心得体会</div>');
+        $("#more").attr("class", "btn btn-lg btn-danger-outline btn-block");
+        var row = null;
+        var num = 0;
+        for (var i = 0; i < strategyArr.length - 1; i++) {
+            row = strategyArr[i].split("✶");
+            if (row[4].indexOf("心得体会") != -1) {
+                num++;
+                $("#accordion").find(".filter-categories").eq(i).css("display", "");
+                if (num == 1) {
+                    $("#accordion").find(".panel-collapse").eq(i).attr("class", "panel-collapse collapse in");
+                }
+                else {
+                    $("#accordion").find(".panel-collapse").eq(i).attr("class", "panel-collapse collapse");
+                }
+            }
+            else {
+                $("#accordion").find(".filter-categories").eq(i).css("display", "none");
+            }
+            if (i > 8) {
+                $("#accordion").find(".filter-categories").eq(i).css("display", "none");
+            }
+        }
+    })
+    var count = 9;
+    $("#more").click(function () {
+        count += 8;
+        $("#accordion").find(".filter-categories").each(function (i) {
+            if (i >=8 && i < count)
+                $(this).css("display", "");
+        });
+
+    })
+</script>
+</html>
+

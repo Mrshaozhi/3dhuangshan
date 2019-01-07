@@ -1,0 +1,545 @@
+﻿
+@{
+    ViewBag.Title = "Photo";
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>美景</title>
+    <!--<link href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700" media="all" rel="stylesheet" type="text/css" />-->
+    <link href="../stylesheets/bootstrap.min.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/font-awesome.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/se7en-font.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/isotope.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/jquery.fancybox.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/fullcalendar.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/wizard.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/select2.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/morris.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/datatables.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/datepicker.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/timepicker.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/colorpicker.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/bootstrap-switch.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/daterange-picker.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/typeahead.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/summernote.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/pygments.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/style.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/color/green.css" media="all" rel="alternate stylesheet" title="green-theme" type="text/css" />
+    <link href="../stylesheets/color/orange.css" media="all" rel="alternate stylesheet" title="orange-theme" type="text/css" />
+    <link href="../stylesheets/color/magenta.css" media="all" rel="alternate stylesheet" title="magenta-theme" type="text/css" />
+    <link href="../stylesheets/color/gray.css" media="all" rel="alternate stylesheet" title="gray-theme" type="text/css" />
+    <script src="../javascripts/jquery.min.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery-ui.js" type="text/javascript"></script>
+    <script src="../javascripts/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../javascripts/raphael.min.js" type="text/javascript"></script>
+    <script src="../javascripts/selectivizr-min.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.mousewheel.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.vmap.min.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.vmap.sampledata.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.vmap.world.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.bootstrap.wizard.js" type="text/javascript"></script>
+    <script src="../javascripts/fullcalendar.min.js" type="text/javascript"></script>
+    <script src="../javascripts/gcal.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="../javascripts/datatable-editable.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.easy-pie-chart.js" type="text/javascript"></script>
+    <script src="../javascripts/excanvas.min.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.isotope.min.js" type="text/javascript"></script>
+    <script src="../javascripts/isotope_extras.js" type="text/javascript"></script>
+    <script src="../javascripts/modernizr.custom.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.fancybox.pack.js" type="text/javascript"></script>
+    <script src="../javascripts/select2.js" type="text/javascript"></script>
+    <script src="../javascripts/styleswitcher.js" type="text/javascript"></script>
+    <script src="../javascripts/wysiwyg.js" type="text/javascript"></script>
+    <script src="../javascripts/summernote.min.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.inputmask.min.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.validate.js" type="text/javascript"></script>
+    <script src="../javascripts/bootstrap-fileupload.js" type="text/javascript"></script>
+    <script src="../javascripts/bootstrap-datepicker.js" type="text/javascript"></script>
+    <script src="../javascripts/bootstrap-timepicker.js" type="text/javascript"></script>
+    <script src="../javascripts/bootstrap-colorpicker.js" type="text/javascript"></script>
+    <script src="../javascripts/bootstrap-switch.min.js" type="text/javascript"></script>
+    <script src="../javascripts/typeahead.js" type="text/javascript"></script>
+    <script src="../javascripts/daterange-picker.js" type="text/javascript"></script>
+    <script src="../javascripts/date.js" type="text/javascript"></script>
+    <script src="../javascripts/morris.min.js" type="text/javascript"></script>
+    <script src="../javascripts/skycons.js" type="text/javascript"></script>
+    <script src="../javascripts/fitvids.js" type="text/javascript"></script>
+    <script src="../javascripts/jquery.sparkline.min.js" type="text/javascript"></script>
+    <script src="../javascripts/main.js" type="text/javascript"></script>
+    <script src="../javascripts/respond.js" type="text/javascript"></script>
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/style1.css" />
+    <script src="../javascripts/modernizr-custom.js"></script>
+    <script src="../javascripts/Load.js"></script>
+
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <style>
+        #loading {
+            background-color: #000000;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            z-index: 1;
+            margin-top: 0px;
+            top: 0px;
+        }
+
+        #loading-center {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        #loading-center-absolute {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            height: 50px;
+            width: 50px;
+            margin-top: -25px;
+            margin-left: -25px;
+            -ms-transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+            -webkit-animation: loading-center-absolute 1.5s infinite;
+            animation: loading-center-absolute 1.5s infinite;
+        }
+
+        .object {
+            width: 25px;
+            height: 25px;
+            background-color: #FFF;
+            float: left;
+        }
+
+        #object_one {
+            -webkit-animation: object_one 1.5s infinite;
+            animation: object_one 1.5s infinite;
+        }
+
+        #object_two {
+            -webkit-animation: object_two 1.5s infinite;
+            animation: object_two 1.5s infinite;
+        }
+
+        #object_three {
+            -webkit-animation: object_three 1.5s infinite;
+            animation: object_three 1.5s infinite;
+        }
+
+        #object_four {
+            -webkit-animation: object_four 1.5s infinite;
+            animation: object_four 1.5s infinite;
+        }
+
+
+        @@-webkit-keyframes loading-center-absolute {
+            100% {
+                -webkit-transform: rotate(-45deg);
+            }
+        }
+
+        @@keyframes loading-center-absolute {
+            100% {
+                transform: rotate(-45deg);
+                -webkit-transform: rotate(-45deg);
+            }
+        }
+
+        @@-webkit-keyframes object_one {
+            25% {
+                -webkit-transform: translate(0,-50px) rotate(-180deg);
+            }
+
+            100% {
+                -webkit-transform: translate(0,0) rotate(-180deg);
+            }
+        }
+
+        @@keyframes object_one {
+            25% {
+                transform: translate(0,-50px) rotate(-180deg);
+                -webkit-transform: translate(0,-50px) rotate(-180deg);
+            }
+
+            100% {
+                transform: translate(0,0) rotate(-180deg);
+                -webkit-transform: translate(0,0) rotate(-180deg);
+            }
+        }
+
+        @@-webkit-keyframes object_two {
+            25% {
+                -webkit-transform: translate(50px,0) rotate(-180deg);
+            }
+
+            100% {
+                -webkit-transform: translate(0,0) rotate(-180deg);
+            }
+        }
+
+        @@keyframes object_two {
+            25% {
+                transform: translate(50px,0) rotate(-180deg);
+                -webkit-transform: translate(50px,0) rotate(-180deg);
+            }
+
+            100% {
+                transform: translate(0,0) rotate(-180deg);
+                -webkit-transform: translate(0,0) rotate(-180deg);
+            }
+        }
+
+        @@-webkit-keyframes object_three {
+            25% {
+                -webkit-transform: translate(-50px,0) rotate(-180deg);
+            }
+
+            100% {
+                -webkit-transform: translate(0,0) rotate(-180deg);
+            }
+        }
+
+        @@keyframes object_three {
+            25% {
+                transform: translate(-50px,0) rotate(-180deg);
+                -webkit-transform: translate(-50px,0) rotate(-180deg);
+            }
+
+            100% {
+                transform: translate(0,0) rotate(-180deg);
+                -webkit-transform: rtranslate(0,0) rotate(-180deg);
+            }
+        }
+
+        @@-webkit-keyframes object_four {
+            25% {
+                -webkit-transform: translate(0,50px) rotate(-180deg);
+            }
+
+            100% {
+                -webkit-transform: translate(0,0) rotate(-180deg);
+            }
+        }
+
+        @@keyframes object_four {
+            25% {
+                transform: translate(0,50px) rotate(-180deg);
+                -webkit-transform: translate(0,50px) rotate(-180deg);
+            }
+
+            100% {
+                transform: translate(0,0) rotate(-180deg);
+                -webkit-transform: translate(0,0) rotate(-180deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="modal-shiftfix">
+        <!-- Navigation -->
+        <div class="navbar navbar-fixed-top scroll-hide">
+            <div class="container-fluid top-bar" style="border-bottom: 0px solid #e6e6e6;">
+                <div class="pull-right">
+                    <ul class="nav navbar-nav pull-right">
+                        <li class="dropdown settings hidden-xs">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <span aria-hidden="true" class="se7en-gear"></span>
+                                <div class="sr-only">
+                                    Settings
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="settings-link blue" href="javascript:chooseStyle('none', 30)"><span></span>天空蓝</a>
+                                </li>
+                                <li>
+                                    <a class="settings-link green" href="javascript:chooseStyle('green-theme', 30)"><span></span>森林绿</a>
+                                </li>
+                                <li>
+                                    <a class="settings-link orange" href="javascript:chooseStyle('orange-theme', 30)"><span></span>橘子黄</a>
+                                </li>
+                                <li>
+                                    <a class="settings-link magenta" href="javascript:chooseStyle('magenta-theme', 30)"><span></span>罗兰紫</a>
+                                </li>
+                                <li>
+                                    <a class="settings-link gray" href="javascript:chooseStyle('gray-theme', 30)"><span></span>星空灰</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown user hidden-xs">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <img width="34" height="34" src="images/avatar-male.jpg" />邵志<b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-user"></i>我的账户
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-gear"></i>我的消息
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="login1.html">
+                                        <i class="icon-signout"></i>退出登陆
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <button class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="logo" href="index-2.html">se7en</a>
+            </div>
+            <div class="container-fluid main-nav clearfix" style="background-color:#000000">
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li>
+                            <a href="../HS_3DMountain/3DMountain">
+                                <span aria-hidden="true" class=" icon-globe"></span>3D黄山
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../HS_Map/Map">
+                                <span aria-hidden="true" class="icon-map-marker"></span>我的定位
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../HS_Weather/Weather">
+                                <span aria-hidden="true" class="icon-sun"></span>黄山天气
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../HS_MapLoad/MapLoad">
+                                <span aria-hidden="true" class="icon-folder-close-alt"></span>地图下载
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" href="#">
+                                <span aria-hidden="true" class="icon-plane"></span>攻略<b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../HS_Strategy/Strategy">浏览</a>
+                                </li>
+                                <li>
+                                    <a href="../HS_Strategy/NewStrategy">编写</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="../HS_Photo/Photo" class="current">
+                                <span aria-hidden="true" class="icon-camera-retro"></span>美景
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../HS_About/About">
+                                <span aria-hidden="true" class="icon-paper-clip"></span>关于
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" href="#">
+                                <span aria-hidden="true" class="icon-star-empty"></span>我自己<b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../HS_MySelf/Home">主页</a>
+                                </li>
+                                <li>
+                                    <a href="../HS_MySelf/Calendar">便签</a>
+                                </li>
+                                <li>
+                                    <a href="../HS_MySelf/FeedBack">信息反馈</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- End Navigation --><hr />
+
+        <div class="container-fluid main-content">
+            <!-- 加载动画 -->
+            <div id="loading">
+                <div id="loading-center">
+                    <div id="loading-center-absolute">
+                        <div class="object" id="object_one"></div>
+                        <div class="object" id="object_two"></div>
+                        <div class="object" id="object_three"></div>
+                        <div class="object" id="object_four"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-title">
+                <h2 class="text">
+                    相册
+                </h2>
+            </div>
+            <div class="col-lg-12">
+                <div class="grid" id="photo">
+
+                </div>
+                <div class="preview">
+                    <button class="action action--close"><i class="fa fa-times"><br /><br /><br /><br />X</i><span class="text-hidden">Close</span></button>
+                    <div class="description description--preview"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="widget-container fluid-height" style="background-color:#000000">
+                        <div class="heading" style="background-color:#000">
+                            <i class="icon-picture"></i>上传我的图片
+                        </div>
+                        <div class="widget-content padded">
+                            <input type="text" class="form-control col-lg-4" style="background-color:#000000;border:2px dashed #dddddd;color:#FFF" placeholder="添加描述" />
+                        </div>
+                        <div class="widget-content padded">
+                            <div class="single-file-drop" id="image">
+                                <h4>请将图片拖拽至此处或点击'选择'按钮</h4>
+                            </div>
+                        </div>
+                        <div style="text-align:center">
+                            <div class="fileupload fileupload-new" data-provides="fileupload">
+                                <div class="fileupload-preview fileupload-exists img-thumbnail" style="width: 200px; max-height: 150px;display:none" id="show"></div>
+                                <div>
+                                    <span class="btn btn-default-outline btn-file">
+                                        <span class="fileupload-new">选择</span>
+                                        <span class="fileupload-exists">更改(已选)</span><input type="file" accept="image/*" id="file" />
+                                    </span>
+                                    <a class="btn btn-default fileupload-exists" data-dismiss="fileupload" href="#" style="display:none" id="a">移除</a>
+                                    <button class="btn btn-info" id="submit">上传图片</button>
+                                    <button class="btn btn-default-outline" id="remove">移除</button>
+                                </div>
+                            </div><br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../javascripts/imagesloaded.pkgd.min.js"></script>
+<script src="../javascripts/masonry.pkgd.min.js"></script>
+<script src="../javascripts/classie.js"></script>
+<script src="../javascripts/main1.js"></script>
+<script>
+        $('#file').change(function () {
+            setTimeout(function () { $("#image").html(""); $("#image").append('<img src="' + $("#show").children("img").attr("src") + '" >'); }, 100);
+        });
+        $('#remove').click(function () {
+            $("#a").click();
+
+            setTimeout(function () { $("#image").html(""); $("#image").append("<h4>请将图片拖拽至此处或点击'选择'按钮</h4>"); }, 100);
+        });
+        $('#submit').click(function () {
+            var base64 = $("#image").children("img").attr("src");
+            if (base64 == undefined) {
+                alert("请选择图片！");
+            }
+            else {
+                var myDate = new Date().getTime();
+                $("#image").children("img").attr("src", "../IMG/Photo/" + myDate + ".png");
+                var path = $("#image").children("img").attr("src");
+                $("#image").children("img").attr("src", base64);
+                $.ajax({
+                    type: "POST",
+                    url: "HS_Photo.ashx",
+                    data: { base64: base64, path: path,judge:"first" },
+                    dataType: "JSON",
+                    error: function () {
+                        alert("上传错误！");
+                    },
+                    success: function (data) {
+                        alert(data.message);
+                        $("#image").html("");
+                        $("#image").append("<h4>请将图片拖拽至此处或点击'选择'按钮</h4>");
+                    }
+                });
+            }
+        });
+        (function () {
+            SeachPhoto();
+            function SeachPhoto() {
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("PhotoBusiness", "HS_Photo")',
+                    data: { judge: "second" },
+                    dataType: "text",
+                    error: function () {
+                        alert("查询出错！");
+                    },
+                    success: function (data) {
+                        var Arr = data.split("┇");
+                        var row = null;
+                        for (var i = 0; i < Arr.length - 1; i++) {
+                            row = Arr[i].split("✶");
+                            $("#photo").append('<div class="grid__item" data-size="800x800"> <a href="' + row[0] + '" class="img-wrap"><img src="' + row[0] + '" alt="' + row[1] + '" /><div class="description description--grid"><p>飞来石</p>作者:邵志</div></a> </div>')
+                        }
+                        // create SVG circle overlay and append it to the preview element
+                        function createCircleOverlay(previewEl) {
+                            var dummy = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                            dummy.setAttributeNS(null, 'version', '1.1');
+                            dummy.setAttributeNS(null, 'width', '100%');
+                            dummy.setAttributeNS(null, 'height', '100%');
+                            dummy.setAttributeNS(null, 'class', 'overlay');
+                            var g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+                            var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                            circle.setAttributeNS(null, 'cx', 0);
+                            circle.setAttributeNS(null, 'cy', 0);
+                            circle.setAttributeNS(null, 'r', Math.sqrt(Math.pow(previewEl.offsetWidth, 2) + Math.pow(previewEl.offsetHeight, 2)));
+                            dummy.appendChild(g);
+                            g.appendChild(circle);
+                            previewEl.appendChild(dummy);
+                        }
+
+                        new GridFx(document.querySelector('.grid'), {
+                            onInit: function (instance) {
+                                createCircleOverlay(instance.previewEl);
+                            },
+                            onResize: function (instance) {
+                                instance.previewEl.querySelector('svg circle').setAttributeNS(null, 'r', Math.sqrt(Math.pow(instance.previewEl.offsetWidth, 2) + Math.pow(instance.previewEl.offsetHeight, 2)));
+                            },
+                            onOpenItem: function (instance, item) {
+                                // item's image
+                                var gridImg = item.querySelector('img'),
+                                    gridImgOffset = gridImg.getBoundingClientRect(),
+                                    win = { width: document.documentElement.clientWidth, height: window.innerHeight },
+                                    SVGCircleGroupEl = instance.previewEl.querySelector('svg > g'),
+                                    SVGCircleEl = SVGCircleGroupEl.querySelector('circle');
+
+                                SVGCircleEl.setAttributeNS(null, 'r', Math.sqrt(Math.pow(instance.previewEl.offsetWidth, 2) + Math.pow(instance.previewEl.offsetHeight, 2)));
+                                // set the transform for the SVG g node. This will animate the circle overlay. The origin of the circle depends on the position of the clicked item.
+                                if (gridImgOffset.left + gridImg.offsetWidth / 2 < win.width / 2) {
+                                    SVGCircleGroupEl.setAttributeNS(null, 'transform', 'translate(' + win.width + ', ' + (gridImgOffset.top + gridImg.offsetHeight / 2 < win.height / 2 ? win.height : 0) + ')');
+                                }
+                                else {
+                                    SVGCircleGroupEl.setAttributeNS(null, 'transform', 'translate(0, ' + (gridImgOffset.top + gridImg.offsetHeight / 2 < win.height / 2 ? win.height : 0) + ')');
+                                }
+                            }
+                        });
+                        setTimeout(function () {
+                            $("#loading").css("display", "none");
+                        }, 1700);
+
+                    }
+                });
+            }
+
+
+		})();
+</script>
+
+</html>
+
+
