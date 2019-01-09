@@ -7,7 +7,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>模板</title>
+    <title>详情</title>
     <!--<link href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700" media="all" rel="stylesheet" type="text/css" />-->
     <link href="../stylesheets/bootstrap.min.css" media="all" rel="stylesheet" type="text/css" />
     <link href="../stylesheets/font-awesome.css" media="all" rel="stylesheet" type="text/css" />
@@ -222,7 +222,7 @@
                                     <p style="font-size:10px" id="time"></p><br />
                                 </div>
                                 <div class="col-md-2" style="text-align:right">
-                                    <span style="font-size:10px;top:15px;" id="">浏览量：1230次</span>
+                                    <span style="font-size:10px;top:15px;" id="browse"></span>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -240,6 +240,12 @@
                                     </div>
                                 </div>
                             </div>
+                            <div>
+                            <div id="fancybox-example" style="display: none;text-align:center;border-top:2px solid #0094ff;">
+                                <h3 id="result" style="width:200px;height:50px;margin-top:30px">                                    
+                                </h3>
+                            </div>
+                            <a class="btn btn-default btn fancybox" href="#fancybox-example" id="a" style="display:none"></a>
                         </div>
                     </div>
                 </div>
@@ -256,18 +262,73 @@
         }
         return null;
     }
-    $("#heart").click(function () {
+    $("#heart").click(function () {       
         if ($("#heart").attr("class") == "icon-heart-empty") {
+            //CSS样式处理
             $("#heart").attr("class", "icon-heart");
             $("#num").text(parseInt($("#num").text()) + 1);
+
+            //逻辑处理
+            var sId = GetQueryString("id");
+            $.ajax({
+                type: "POST",
+                url: '../HS_Strategy/StrategyBusiness',
+                data: { judge: "third", sId: sId },
+                dataType: 'text',
+                error: function () {
+                    alert("获取错误！");
+                },
+                success: function (data) {
+                    if (data == "ok") {
+                        $("#result").text("已收藏,可在主页查看");
+                        $("#a").click();
+                    }
+                    if (data == "false") {
+                        $("#result").text("已收藏");
+                        $("#a").click();
+                    }
+                }
+            });
         }
         else if ($("#heart").attr("class") == "icon-heart") {
             $("#heart").attr("class", "icon-heart-empty");
             $("#num").text(parseInt($("#num").text()) - 1);
+            //逻辑处理
+            var sId = GetQueryString("id");
+            $.ajax({
+                type: "POST",
+                url: '../HS_Strategy/StrategyBusiness',
+                data: { judge: "fourth", sId: sId },
+                dataType: 'text',
+                error: function () {
+                    alert("获取错误！");
+                },
+                success: function (data) {
+                    if (data == "ok") {
+                        $("#result").text("已取消收藏");
+                        $("#a").click();
+                    }
+                }
+            });
         }
     });
     $(function () {
+        
         var id = GetQueryString("id");
+        //更新浏览数
+        $.ajax({
+            type: "POST",
+            url: '../HS_Strategy/StrategyBusiness',
+            data: { judge: "seventh", id: id },
+            dataType: 'text',
+            error: function () {
+                alert("获取错误！");
+            },
+            success: function (data) {
+                
+            }
+        });
+        //获取详情
         $.ajax({
             type: "POST",
             url: '../HS_Strategy/StrategyBusiness',
@@ -283,10 +344,44 @@
                 $("#title").text(strategyArr[0]);
                 $("#content").html(strategyArr[2])
                 $("#time").text(strategyArr[4]);
-                $("#show").attr("src", "../" + strategyArr[1]);
+                $("#show").attr("src", strategyArr[1]);
+                $("#browse").text("浏览量：" + strategyArr[6] + "次");
 
             }
         });
+        //获取用户是否收藏
+        $.ajax({
+            type: "POST",
+            url: '../HS_Strategy/StrategyBusiness',
+            data: { judge: "fiveth", id: id },
+            dataType: 'text',
+            error: function () {
+                alert("获取错误！");
+            },
+            success: function (data) {
+                if (data == "ok") {
+                    $("#heart").attr("class", "icon-heart");
+                }
+                if (data == "false") {
+                    $("#heart").attr("class", "icon-heart-empty");
+                }
+            }
+        });
+        //获取文章收藏数
+        $.ajax({
+            type: "POST",
+            url: '../HS_Strategy/StrategyBusiness',
+            data: { judge: "sixth", id: id },
+            dataType: 'text',
+            error: function () {
+                alert("获取错误！");
+            },
+            success: function (data) {
+                $("#num").text(data);
+            }
+        });
+
+        
     })
 </script>
 </html>

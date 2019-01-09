@@ -113,13 +113,14 @@ namespace HSData.Model
         }
 
         //更新攻略浏览量
-        public void StrategyClickUpdata(int id, int click)
+        public void StrategyClickUpdata(int id)
         {
             Model1 mod = new Model1();
+            var info = mod.Tb_Strategy.Where(u => u.Strategy_ID == id).Select(u => new { num = u.Strategy_Click }).FirstOrDefault();
             var strategy = new Tb_Strategy
             {
                 Strategy_ID = id,
-                Strategy_Click = click,
+                Strategy_Click = info.num + 1
             };
             mod.Tb_Strategy.Attach(strategy);
             var setEntry = ((IObjectContextAdapter)mod).ObjectContext.ObjectStateManager.GetObjectStateEntry(strategy);

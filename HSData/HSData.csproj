@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DL_Collect.cs" />
     <Compile Include="DT_Photo.cs" />
     <Compile Include="DT_Strategy.cs" />
     <Compile Include="DT_User.cs" />

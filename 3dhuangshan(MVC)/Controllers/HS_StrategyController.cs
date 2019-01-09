@@ -50,6 +50,64 @@ namespace _3dhuangshan_MVC_.Controllers
                 Response.Write(Arr);
                 Response.End();
             }
+            if(judge == "third")
+            {
+                int userId = Convert.ToInt16(HttpContext.Session["UserID"]);
+                //如果session过期则使用cookies
+                if (userId == 0)
+                {
+                    userId = Convert.ToInt32(HttpContext.Request.Cookies["UserID"].Value);
+                }
+                int sId = Convert.ToInt32(Request["sId"]);
+                HSData.Model.Model1 mod = new HSData.Model.Model1();
+                string result = mod.CollectInsert(userId, sId);
+                Response.Write(result);
+                Response.End();
+            }
+            if (judge == "fourth")
+            {
+                int userId = Convert.ToInt16(HttpContext.Session["UserID"]);
+                //如果session过期则使用cookies
+                if (userId == 0)
+                {
+                    userId = Convert.ToInt32(HttpContext.Request.Cookies["UserID"].Value);
+                }
+                int sId = Convert.ToInt32(Request["sId"]);
+                HSData.Model.Model1 mod = new HSData.Model.Model1();
+                string result = mod.CollectDelet(userId, sId);
+                Response.Write(result);
+                Response.End();
+            }
+            if (judge == "fiveth")
+            {
+                int userId = Convert.ToInt16(HttpContext.Session["UserID"]);
+                //如果session过期则使用cookies
+                if (userId == 0)
+                {
+                    userId = Convert.ToInt32(HttpContext.Request.Cookies["UserID"].Value);
+                }
+                int sId = Convert.ToInt32(Request["id"]);
+                HSData.Model.Model1 mod = new HSData.Model.Model1();
+                string result = mod.CollectProof(userId, sId);
+                Response.Write(result);
+                Response.End();
+            }
+            if (judge == "sixth")
+            {
+                int sId = Convert.ToInt32(Request["id"]);
+                HSData.Model.Model1 mod = new HSData.Model.Model1();
+                int result = mod.CollectSearch(sId);
+                Response.Write(result);
+                Response.End();
+            }
+            if (judge == "seventh")
+            {
+                int sId = Convert.ToInt32(Request["id"]);
+                HSData.Model.Model1 mod = new HSData.Model.Model1();
+                mod.StrategyClickUpdata(sId);
+                Response.Write("ok");
+                Response.End();
+            }
         }
         [ValidateInput(false)]
         public void NewStrategyBusiness(string title, string base64, string checkArr,string contentIMG, string content,string imgArr, string show)

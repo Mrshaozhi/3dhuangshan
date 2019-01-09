@@ -103,5 +103,59 @@ namespace HSData.Model
                 return null;
             }
         }
+
+        //查询指定用户信息
+        public ArrayList UserInfo(int id)
+        {
+            Model1 mod = new Model1();
+            var list = mod.Tb_User
+                .Where(u => u.User_ID == id).Select(u => new
+                {
+                    userName = u.User_Name,
+                    userShow = u.User_Photo,
+                    userEmail = u.User_Email,
+                    userLevel = u.User_Level,
+                    userTime = u.User_RegisterTime
+                });           
+            ArrayList arr = new ArrayList();
+            foreach (var it in list)
+            {
+                arr.Add(it.userName + "✶");
+                arr.Add(it.userShow + "✶");
+                arr.Add(it.userEmail + "✶");
+                arr.Add(it.userTime + "✶");
+                arr.Add(it.userLevel + "✶");
+            }
+            return arr;
+        }
+
+        //查询所有用户信息
+        //查询指定用户信息
+        public ArrayList AllUserInfo(int id)
+        {
+            Model1 mod = new Model1();
+            var list = mod.Tb_User
+                .Select(u => new
+                {
+                    userId = u.User_ID,
+                    userName = u.User_Name,
+                    userShow = u.User_Photo,
+                    userEmail = u.User_Email,
+                    userLevel = u.User_Level,
+                    userTime = u.User_RegisterTime
+                });
+            ArrayList arr = new ArrayList();
+            foreach (var it in list)
+            {
+                arr.Add(it.userId + "✶");
+                arr.Add(it.userName + "✶");
+                arr.Add(it.userShow + "✶");
+                arr.Add(it.userEmail + "✶");
+                arr.Add(it.userTime + "✶");
+                arr.Add(it.userLevel + "✶");
+                arr.Add("┇");
+            }
+            return arr;
+        }
     }
 }
